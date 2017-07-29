@@ -1,6 +1,9 @@
 #include "Engine.h"
 
 #include <SDL.h>
+#include <glew.h>
+#include <SDL_opengl.h>
+#include <gl\glu.h>
 
 using namespace std;
 
@@ -12,8 +15,6 @@ namespace Engine
 
 	bool Initialise()
 	{
-		printf("Game Engine Started.\n");
-
 		if(SDL_Init(SDL_INIT_VIDEO) < 0) { printf("[Error] SDL didn't initialise. (Error: %s)", SDL_GetError()); return false; }
 
 		// Attempt to set texture filtering to linear.
@@ -25,20 +26,35 @@ namespace Engine
 		// Did the window get created?
 		if(gWindow == NULL) { printf("[Error] We encountered a problem while creating game window was not created. (Error: %s)", SDL_GetError()); return false; }
 
-		SDL_Delay(2000);
+		gGLContext = SDL_GL_CreateContext(gWindow);
 
+		// Did we setup the OpenGL context.
+		if(gGLContext == NULL) { printf("We encountered a problem while creating the OpenGL context. (Error: %s).", SDL_GetError()); return false; }
+
+		// Initializing GLEW
+		glewExperimental = GL_TRUE;
+		GLenum glewError = glewInit();
+
+		if(glewError != GLEW_OK) { printf("We encountered a problem while initializing GLEW! (Error: %s)\n", glewGetErrorString(glewError)); return false; }
+
+		//printf("*** You are using OpenGL version: %s. ***\n\n", glGetString(GL_VERSION));
+
+		printf("Game Engine Started.\n");
 		return true;
 	}
 
 	void Deinitialise() {
-		printf("Game Engine Stopping.\n");
 		SDL_DestroyWindow(gWindow);
 		SDL_Quit();
+		printf("Game Engine Stopped.\n");
 	}
 	
-	void Render() {}
+	void Render() {
+		printf("Render.\n");
+	}
 
 	bool Update() {
+		printf("Update.\n");
 		return false;
 	}
 }

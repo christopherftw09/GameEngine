@@ -11,16 +11,14 @@ int main(int argc, char* args[])
 {
 	if(Initialise())
 	{
-		bool running = true;
-
 		do // the game loop.
 		{
 			Render();
-			running = Update();
 		}
-		while(running);
+		while(Update());
 	}
 
 	Deinitialise(); // closing the game window and then freeing up any used resources (i'm recycling :D).
+	system("pause");
 	return 0;
 }
