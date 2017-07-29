@@ -79,13 +79,13 @@ namespace Engine
 		// Handle any upcoming events.
 		switch(e.type)
 		{
-			case SDL_QUIT: // What happens if the user clicks the windows close (red cross) button.
+			// What happens if the user clicks the windows close (red cross) button.
+			case SDL_QUIT:
 				return false;
-			break;
 
-			default:
+			/*default:
 				// link to screen manager.
-			break;
+			break;*/
 		}
 
 		// Set the current time to be the old time.
