@@ -19,6 +19,5 @@ int main(int argc, char* args[])
 	}
 
 	Deinitialise(); // closing the game window and then freeing up any used resources (i'm recycling :D).
-	system("pause");
 	return 0;
 }

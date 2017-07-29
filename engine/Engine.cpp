@@ -20,6 +20,11 @@ namespace Engine
 		// Attempt to set texture filtering to linear.
 		if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) printf("*** [Warning] Linear texture filtering not available. ***\n");
 
+		// Requesting OpenGL's 3.1 context. (3.2)
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
+
 		// Creating the game window.
 		gWindow = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL); // SDL_FULLSCREEN SDL_RESIZABLE
 
@@ -35,7 +40,7 @@ namespace Engine
 		glewExperimental = GL_TRUE;
 		GLenum glewError = glewInit();
 
-		if(glewError != GLEW_OK) { printf("We encountered a problem while initializing GLEW! (Error: %s)\n", glewGetErrorString(glewError)); return false; }
+		if(glewError != GLEW_OK) { printf("We encountered a problem while initialising GLEW! (Error: %s)\n", glewGetErrorString(glewError)); return false; }
 
 		//printf("*** You are using OpenGL version: %s. ***\n\n", glGetString(GL_VERSION));
 
@@ -43,18 +48,48 @@ namespace Engine
 		return true;
 	}
 
-	void Deinitialise() {
+	void Deinitialise()
+	{
 		SDL_DestroyWindow(gWindow);
+		gWindow = nullptr;
+
 		SDL_Quit();
 		printf("Game Engine Stopped.\n");
 	}
 	
-	void Render() {
-		printf("Render.\n");
+	void Render()
+	{
+		// run the screen manager's render function.
+
+		// Updating the OpenGL renderer.
+		SDL_GL_SwapWindow(gWindow);
 	}
 
-	bool Update() {
-		printf("Update.\n");
-		return false;
+	bool Update()
+	{
+		// Getting and setting the new time.
+		Uint32 newTime = SDL_GetTicks();
+
+		// Event Handler.
+		SDL_Event e;
+
+		// Get the events.
+		SDL_PollEvent(&e);
+
+		// Handle any upcoming events.
+		switch(e.type)
+		{
+			case SDL_QUIT: // What happens if the user clicks the windows close (red cross) button.
+				return false;
+			break;
+
+			default:
+				// link to screen manager.
+			break;
+		}
+
+		// Set the current time to be the old time.
+		gOldTime = newTime;
+		return true;
 	}
 }
