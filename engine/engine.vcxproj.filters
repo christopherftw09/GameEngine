@@ -16,15 +16,75 @@
     <Filter Include="Resource Files\SDL">
       <UniqueIdentifier>{39252b66-a0d8-495f-aa45-757c7e21d0f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{e853ee6e-dd96-478b-911d-b2eda2cc1d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{9b64c3ab-48fa-4609-8d10-d228b1fa68fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maths">
+      <UniqueIdentifier>{7c9ac2a0-ddc8-4acd-8a49-b14ce140fb6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Maths\Vector">
+      <UniqueIdentifier>{f7f35442-ba20-40d5-933f-cea504ec395f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unsorted">
+      <UniqueIdentifier>{4c58bdb4-d08b-4574-be0f-910803ef87fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Unsorted">
+      <UniqueIdentifier>{5f35fdb2-0214-442e-8edf-f48d473e4627}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maths">
+      <UniqueIdentifier>{1124441f-8501-4347-81f8-a0a6ed6a2e14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Maths\Vector">
+      <UniqueIdentifier>{945ede80-647d-4591-8d77-fb7bb2becc11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Maths\Vector2.cpp">
+      <Filter>Source Files\Maths\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Vector3.cpp">
+      <Filter>Source Files\Maths\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\SceneManager.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Unsorted\Camera.cpp">
+      <Filter>Source Files\Unsorted</Filter>
+    </ClCompile>
+    <ClCompile Include="Unsorted\Object.cpp">
+      <Filter>Source Files\Unsorted</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\Vector2.h">
+      <Filter>Header Files\Maths\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Maths\Vector3.h">
+      <Filter>Header Files\Maths\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\SceneManager.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\Unsorted</Filter>
+    </ClInclude>
+    <ClInclude Include="Unsorted\Object.h">
+      <Filter>Header Files\Unsorted</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

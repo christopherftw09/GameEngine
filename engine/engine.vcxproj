@@ -148,9 +148,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="Maths\Vector2.cpp" />
+    <ClCompile Include="Maths\Vector3.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Unsorted\Camera.cpp" />
+    <ClCompile Include="Unsorted\Object.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="Maths\Vector2.h" />
+    <ClInclude Include="Maths\Vector3.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Unsorted\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="dependencies\SDL\SDL2.lib" />

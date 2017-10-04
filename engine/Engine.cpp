@@ -5,6 +5,8 @@
 #include <SDL_opengl.h>
 #include <gl\glu.h>
 
+#include "Scene\SceneManager.h"
+
 using namespace std;
 
 namespace Engine
@@ -12,6 +14,8 @@ namespace Engine
 	SDL_Window* gWindow = nullptr;
 	SDL_GLContext gGLContext = NULL;
 	Uint32 gOldTime;
+
+	SceneManager* SceneManager::mInstance = nullptr;
 
 	bool Initialise()
 	{
@@ -44,6 +48,8 @@ namespace Engine
 
 		//printf("*** You are using OpenGL version: %s. ***\n\n", glGetString(GL_VERSION));
 
+		gOldTime = SDL_GetTicks();
+
 		printf("Game Engine Started.\n");
 		return true;
 	}
@@ -60,6 +66,7 @@ namespace Engine
 	void Render()
 	{
 		// run the screen manager's render function.
+		SceneManager::Instance()->Render();
 
 		// Updating the OpenGL renderer.
 		SDL_GL_SwapWindow(gWindow);
@@ -83,9 +90,9 @@ namespace Engine
 			case SDL_QUIT:
 				return false;
 
-			/*default:
-				// link to screen manager.
-			break;*/
+			default:
+				SceneManager::Instance()->Update((float)(newTime - gOldTime) / 1000.0f, e);
+			break;
 		}
 
 		// Set the current time to be the old time.
